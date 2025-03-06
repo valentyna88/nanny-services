@@ -1,10 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.module.css';
 import Layout from '../Layout';
-import Home from '../../pages/Home/Home';
-import Nannies from '../../pages/Nannies/Nannies';
-import Favorites from '../../pages/Favorites/Favorites';
-import NotFound from '../../pages/NotFound/NotFound';
+
+const Home = lazy(() => import('../../pages/Home/Home'));
+const Nannies = lazy(() => import('../../pages/Nannies/Nannies'));
+const Favorites = lazy(() => import('../../pages/Favorites/Favorites'));
+const NotFound = lazy(() => import('../../pages/NotFound/NotFound'));
 
 const App = () => {
   return (
