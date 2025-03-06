@@ -1,21 +1,26 @@
 import { Route, Routes } from 'react-router-dom';
+import { lazy } from 'react';
 import './App.module.css';
 import Layout from '../Layout';
 
-const Home = lazy(() => import('../../pages/Home/Home'));
-const Nannies = lazy(() => import('../../pages/Nannies/Nannies'));
-const Favorites = lazy(() => import('../../pages/Favorites/Favorites'));
-const NotFound = lazy(() => import('../../pages/NotFound/NotFound'));
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const NanniesPage = lazy(() => import('../../pages/NanniesPage/NanniesPage'));
+const FavoritesPage = lazy(() =>
+  import('../../pages/FavoritesPage/FavoritesPage')
+);
+const NotFoundPage = lazy(() =>
+  import('../../pages/NotFoundPage/NotFoundPage')
+);
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="/nannies" element={<Nannies />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route index element={<HomePage />} />
+        <Route path="/nannies" element={<NanniesPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
       </Route>
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
