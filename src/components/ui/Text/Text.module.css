@@ -1,0 +1,14 @@
+.light {
+  color: var(--text-color-light);
+}
+.home {
+  font-size: 28px;
+  line-height: 1.07;
+  letter-spacing: -0.02em;
+  color: var(--secondary-bg);
+}
+.bold {
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-color-dark);
+}
