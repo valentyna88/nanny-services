@@ -1,0 +1,36 @@
+.btn {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border-radius: 30px;
+  padding: 14px 40px;
+  transition: background-color var(--transition), border-color var(--transition);
+}
+.btn.outline {
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  background-color: transparent;
+  color: var(--primary-color);
+}
+.btn.filled,
+.btn.started,
+.btn.form {
+  background-color: var(--primary-color);
+  color: var(--secondary-bg);
+  border: 1px solid transparent;
+}
+.btn:hover,
+.btn:focus {
+  background-color: var(--btn-hover-color);
+}
+.btn.outline:hover,
+.btn.outline:focus {
+  border-color: var(--primary-color);
+  background-color: transparent;
+}
+.btn.form {
+  width: 100%;
+}
+.btn.started {
+  padding: 18px 50px;
+  font-size: 20px;
+  line-height: 1.2;
+}
