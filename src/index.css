@@ -11,6 +11,7 @@
   --select-border-color: rgba(16, 57, 49, 0.1);
   --select-border-color-hover: rgba(16, 57, 49, 0.2);
   --select-option-color: rgba(17, 16, 28, 0.3);
+  --overlay: rgba(11, 11, 11, 0.6);
   --text-color-dark: #11101c;
   --text-color-light: rgba(17, 16, 28, 0.5);
   --price-color: #38cd3e;
