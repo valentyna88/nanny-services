@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import css from './Header.module.css';
 import clsx from 'clsx';
+import Button from '../ui/Button/Button';
 
 const Header = () => {
   const buildLinkClass = ({ isActive }) => {
@@ -8,7 +9,7 @@ const Header = () => {
   };
   return (
     <header className={css.header}>
-      <Link to="/" className={clsx(css.link, css.logo)}>
+      <Link to="/" className={css.logo}>
         Nanny.Services
       </Link>
       <nav className={css.nav}>
@@ -19,13 +20,13 @@ const Header = () => {
           Nannies
         </NavLink>
       </nav>
-      <div>
-        <Link to="/login" className={css.login}>
+      <div className={css.authButtons}>
+        <Button type="button" variant="outline" to="/login" as={NavLink}>
           Log In
-        </Link>
-        <Link to="/register" className={css.register}>
+        </Button>
+        <Button type="button" variant="filled" to="/register" as={NavLink}>
           Registration
-        </Link>
+        </Button>
       </div>
     </header>
   );
