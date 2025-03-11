@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  /* min-height: 100vh; */
+  border-radius: 30px;
+  position: relative;
+}
+.leftBlock {
+  width: 517px;
+  padding: 251px 64px 163px 96px;
+}
+.rightBlock {
+  min-width: 699px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background-image: url('/src/assets/images/bg.jpg');
+  background-position: center;
+  background-size: cover;
+  padding: 568px 50px 50px 365px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.checkBlock {
+  padding: 32px;
+  background-color: var(--secondary-bg);
+  border-radius: 20px;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  z-index: 2;
+}
