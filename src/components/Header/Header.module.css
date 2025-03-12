@@ -20,7 +20,3 @@
   letter-spacing: -0.02em;
   color: var(--secondary-bg);
 }
-.authNav {
-  display: flex;
-  gap: 8px;
-}
