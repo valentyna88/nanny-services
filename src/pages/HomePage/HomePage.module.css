@@ -2,13 +2,14 @@
   display: flex;
   justify-content: space-between;
   background-color: var(--primary-color);
-  /* min-height: 100vh; */
+
   border-radius: 30px;
   position: relative;
 }
 .leftBlock {
   width: 517px;
   padding: 251px 64px 163px 96px;
+  /* display: flex; */
 }
 .rightBlock {
   min-width: 699px;

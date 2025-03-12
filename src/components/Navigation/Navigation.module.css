@@ -1,0 +1,24 @@
+.nav {
+  display: flex;
+  gap: 40px;
+}
+.link {
+  position: relative;
+  letter-spacing: -0.01em;
+  color: var(--secondary-bg);
+  padding-bottom: 4px;
+}
+.link:hover {
+  color: var(--btn-hover-color);
+}
+.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: var(--select-bg-color);
+  border-radius: 50%;
+}

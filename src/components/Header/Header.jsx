@@ -1,26 +1,18 @@
 import { Link, NavLink } from 'react-router-dom';
 import css from './Header.module.css';
-import clsx from 'clsx';
 import Button from '../ui/Button/Button';
+import Navigation from '../Navigation/Navigation';
 
 const Header = () => {
-  const buildLinkClass = ({ isActive }) => {
-    return clsx(css.link, isActive && css.active);
-  };
   return (
     <header className={css.header}>
       <div className={css.wrapper}>
         <Link to="/" className={css.logo}>
           Nanny.Services
         </Link>
-        <nav className={css.nav}>
-          <NavLink to="/" className={buildLinkClass}>
-            Home
-          </NavLink>
-          <NavLink to="/nannies" className={buildLinkClass}>
-            Nannies
-          </NavLink>
-        </nav>
+
+        <Navigation />
+
         <div className={css.authNav}>
           <Button type="button" variant="outline" to="/login" as={NavLink}>
             Log In
