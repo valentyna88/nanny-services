@@ -1,16 +1,34 @@
-.header {
+/* .header {
   padding: 20px 96px;
   border-bottom: 1px solid rgba(251, 251, 251, 0.4);
   position: fixed;
   width: 100%;
-  top: 0;
   z-index: 2;
+} */
+
+.header {
+  background-color: var(--primary-color);
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
+
+.homeHeader {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  right: 0;
+  width: 1376px;
+  border-bottom: 1px solid rgba(251, 251, 251, 0.4);
+  background-color: transparent;
+  /* margin: 0 auto; */
+  padding: 20px 96px;
+}
+
 .wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1376px;
+  max-width: 1184px;
   margin: 0 auto;
 }
 .logo {
@@ -19,4 +37,5 @@
   line-height: 1.17;
   letter-spacing: -0.02em;
   color: var(--secondary-bg);
+  margin-right: 487px;
 }
