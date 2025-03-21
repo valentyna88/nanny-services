@@ -31,3 +31,6 @@
   color: var(--secondary-bg);
   margin-right: 487px;
 }
+.logo:hover {
+  color: var(--btn-hover-color);
+}
