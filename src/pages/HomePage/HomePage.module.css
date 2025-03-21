@@ -32,21 +32,17 @@
   background-size: cover;
   background-repeat: no-repeat;
   padding: 568px 50px 50px 365px;
-  top: 0;
-  right: 0;
-  bottom: 0;
   padding-top: 568px;
   padding-left: 365px;
   width: 699px;
 }
 .checkBlock {
-  display: flex;
-  gap: 16px;
   width: 284px;
+  display: flex;
+  gap: 9px;
   padding: 32px;
   background-color: var(--secondary-bg);
   border-radius: 20px;
-  margin: 0 auto;
 }
 .checkIcon {
   width: 54px;
@@ -60,5 +56,4 @@
 .checkText {
   display: flex;
   flex-direction: column;
-  gap: 6px;
 }
