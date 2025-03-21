@@ -30,6 +30,10 @@
   width: 100%;
 }
 .btn.started {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
   padding: 18px 50px;
   font-size: 20px;
   line-height: 1.2;

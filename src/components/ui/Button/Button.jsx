@@ -8,12 +8,13 @@ const Button = ({
   onClick,
   as: Component = 'button',
   to,
+  className,
 }) => {
   return (
     <Component
       type={type}
       onClick={onClick}
-      className={clsx(css.btn, css[variant])}
+      className={clsx(css.btn, css[variant], className)}
       to={to}
     >
       {children}
