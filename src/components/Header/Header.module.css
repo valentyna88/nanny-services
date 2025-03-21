@@ -1,11 +1,3 @@
-/* .header {
-  padding: 20px 96px;
-  border-bottom: 1px solid rgba(251, 251, 251, 0.4);
-  position: fixed;
-  width: 100%;
-  z-index: 2;
-} */
-
 .header {
   background-color: var(--primary-color);
   padding-top: 20px;
@@ -20,7 +12,7 @@
   width: 1376px;
   border-bottom: 1px solid rgba(251, 251, 251, 0.4);
   background-color: transparent;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   padding: 20px 96px;
 }
 

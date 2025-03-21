@@ -19,11 +19,11 @@ const Layout = () => {
         }}
       />
       <main>
-        {/* <Container> */}
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-        {/* </Container> */}
+        <Container>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </Container>
       </main>
     </>
   );
