@@ -6,6 +6,9 @@
 <symbol id="icon-Arrow-horiz" viewBox="0 0 32 32">
 <path fill="#fbfbfb" style="fill: var(--color1, #fbfbfb)" d="M31.549 16.86c0.614-0.636 0.596-1.649-0.040-2.262l-10.359-10.003c-0.636-0.614-1.648-0.596-2.262 0.040s-0.596 1.649 0.040 2.262l9.208 8.892-8.892 9.208c-0.614 0.636-0.596 1.648 0.040 2.262s1.648 0.596 2.262-0.040l10.003-10.358zM1.63 17.851l28.796-0.503-0.056-3.2-28.796 0.503 0.056 3.199z"></path>
 </symbol>
+<symbol id="icon-check" viewBox="0 0 40 32">
+<path fill="#fbfbfb" style="fill: var(--color1, #fbfbfb)" d="M5 11l-5 5 15 15 25-25-5-5-20 20-10-10z"></path>
+</symbol>
 <symbol id="icon-chevron-down" viewBox="0 0 32 32">
 <path fill="none" stroke="#fbfbfb" style="stroke: var(--color1, #fbfbfb)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.2" d="M8 12l8 8 8-8"></path>
 </symbol>
