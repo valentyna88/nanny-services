@@ -2,35 +2,63 @@
   display: flex;
   justify-content: space-between;
   background-color: var(--primary-color);
-
   border-radius: 30px;
-  position: relative;
+  margin: 32px;
+  width: 1376px;
 }
 .leftBlock {
   width: 517px;
   padding: 251px 64px 163px 96px;
-  /* display: flex; */
+}
+.title {
+  width: 517px;
+  margin-bottom: 28px;
+}
+.text {
+  width: 517px;
+  margin-bottom: 64px;
+}
+.icon {
+  transition: transform 0.3s ease-in-out;
+}
+.btn:hover .icon {
+  transform: rotate(53deg);
 }
 .rightBlock {
-  min-width: 699px;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   background-image: url('/src/assets/images/bg.jpg');
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   padding: 568px 50px 50px 365px;
-  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  padding-top: 568px;
+  padding-left: 365px;
+  width: 699px;
 }
 .checkBlock {
+  display: flex;
+  gap: 16px;
+  width: 284px;
   padding: 32px;
   background-color: var(--secondary-bg);
   border-radius: 20px;
-  position: absolute;
-  bottom: 50px;
-  right: 50px;
-  z-index: 2;
+  margin: 0 auto;
+}
+.checkIcon {
+  width: 54px;
+  height: 54px;
+  border-radius: 13px;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkText {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
