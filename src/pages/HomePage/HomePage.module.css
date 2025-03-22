@@ -19,7 +19,7 @@
   margin-bottom: 64px;
 }
 .icon {
-  transition: transform 0.3s ease-in-out;
+  transition: transform var(--transition);
 }
 .btn:hover .icon {
   transform: rotate(53deg);

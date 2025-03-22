@@ -30,6 +30,7 @@
   letter-spacing: -0.02em;
   color: var(--secondary-bg);
   margin-right: 487px;
+  transition: color var(--transition);
 }
 .logo:hover {
   color: var(--btn-hover-color);
