@@ -1,22 +1,22 @@
 .wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--primary-color);
   border-radius: 30px;
-  margin: 32px;
-  width: 1376px;
 }
 .leftBlock {
-  width: 517px;
-  padding: 251px 64px 163px 96px;
+  text-align: center;
+  padding: 150px 20px 50px 20px;
 }
 .title {
-  width: 517px;
-  margin-bottom: 28px;
+  font-size: 30px;
+  margin: 0 auto 16px;
 }
 .text {
-  width: 517px;
-  margin-bottom: 64px;
+  font-size: 20px;
+  margin: 0 auto 32px;
 }
 .icon {
   transition: transform var(--transition);
@@ -25,36 +25,95 @@
   transform: rotate(53deg);
 }
 .rightBlock {
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url('/src/assets/images/bg.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 568px 50px 50px 365px;
-  padding-top: 568px;
-  padding-left: 365px;
-  width: 699px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  padding: 150px 30px 10px;
 }
 .checkBlock {
-  width: 284px;
   display: flex;
   gap: 9px;
-  padding: 32px;
+  padding: 16px;
   background-color: var(--secondary-bg);
   border-radius: 20px;
+  align-items: center;
 }
+
 .checkIcon {
-  width: 54px;
-  height: 54px;
+  width: 40px;
+  height: 40px;
   border-radius: 13px;
   background-color: var(--primary-color);
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .checkText {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    flex-direction: row;
+  }
+  .leftBlock {
+    width: 50%;
+    text-align: left;
+    padding: 200px 10px 50px 32px;
+  }
+  .title {
+    font-size: 40px;
+  }
+  .rightBlock {
+    width: 500px;
+    height: 650px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding-top: 380px;
+    padding-left: 70px;
+  }
+  .checkBlock {
+    padding: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    width: 1376px;
+    margin: 32px auto;
+  }
+  .leftBlock {
+    padding: 251px 64px 163px 96px;
+  }
+  .title {
+    font-size: 70px;
+    margin-bottom: 28px;
+  }
+  .text {
+    font-size: 28px;
+    margin-bottom: 64px;
+  }
+  .rightBlock {
+    width: 699px;
+    height: 736px;
+    padding-top: 568px;
+    padding-left: 365px;
+  }
+  .checkBlock {
+    width: 284px;
+    padding: 32px;
+  }
+  .checkIcon {
+    width: 54px;
+    height: 54px;
+  }
 }
