@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 15px;
 }
 .hamburger {
   display: flex;
@@ -18,25 +19,11 @@
   cursor: pointer;
   color: var(--secondary-bg);
 }
-
-.homeHeader {
-  position: absolute;
-  top: 32px;
-  left: 0;
-  right: 0;
-  max-width: 100%;
-  border-bottom: 1px solid rgba(251, 251, 251, 0.4);
-  background-color: transparent;
-  margin: 0 auto;
-  padding: 20px 96px;
-}
-
 .wrapper {
   display: none;
 }
 .logo {
   font-weight: 500;
-  font-size: 24px;
   line-height: 1.17;
   letter-spacing: -0.02em;
   color: var(--secondary-bg);
@@ -58,7 +45,19 @@
     margin: 0 auto;
   }
   .logo {
+    font-size: 24px;
     margin-right: 60px;
+  }
+  .homeHeader {
+    position: absolute;
+    top: 32px;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    border-bottom: 1px solid rgba(251, 251, 251, 0.4);
+    background-color: transparent;
+    margin: 0 auto;
+    padding: 20px 96px;
   }
 }
 
