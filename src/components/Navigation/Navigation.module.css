@@ -1,6 +1,7 @@
 .nav {
   display: flex;
-  gap: 40px;
+  flex-direction: column;
+  gap: 20px;
 }
 .link {
   position: relative;
@@ -22,4 +23,11 @@
   height: 8px;
   background-color: var(--select-bg-color);
   border-radius: 50%;
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    flex-direction: row;
+    gap: 40px;
+  }
 }
