@@ -1,10 +1,5 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   background-color: var(--primary-color);
-  border-radius: 30px;
 }
 .leftBlock {
   text-align: center;
@@ -12,11 +7,11 @@
 }
 .title {
   font-size: 30px;
-  margin: 0 auto 16px;
+  margin-bottom: 28px;
 }
 .text {
   font-size: 20px;
-  margin: 0 auto 32px;
+  margin-bottom: 64px;
 }
 .icon {
   transition: transform var(--transition);
@@ -32,9 +27,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  border-bottom-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  padding: 150px 30px 10px;
+  padding: 150px 40px 10px;
 }
 .checkBlock {
   display: flex;
@@ -63,7 +56,11 @@
 
 @media screen and (min-width: 768px) {
   .wrapper {
+    display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
   }
   .leftBlock {
     width: 50%;
@@ -96,11 +93,9 @@
   }
   .title {
     font-size: 70px;
-    margin-bottom: 28px;
   }
   .text {
     font-size: 28px;
-    margin-bottom: 64px;
   }
   .rightBlock {
     width: 699px;
