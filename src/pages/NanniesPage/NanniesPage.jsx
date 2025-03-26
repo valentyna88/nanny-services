@@ -13,7 +13,10 @@ const NanniesPage = () => {
         const snapshot = await get(nanniesRef);
         if (snapshot.exists()) {
           const data = snapshot.val();
-          const formattedData = Object.values(data);
+          const formattedData = Object.entries(data).map(([id, nanny]) => ({
+            id,
+            ...nanny,
+          }));
           setNannies(formattedData);
         }
       } catch (error) {
