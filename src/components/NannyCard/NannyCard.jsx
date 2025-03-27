@@ -3,6 +3,24 @@ import Title from '../ui/Title/Title';
 import sprite from '../../assets/sprite.svg';
 import css from './NannyCard.module.css';
 
+const calculateAge = birthday => {
+  if (!birthday) return 'N/A'; // Якщо дати народження немає
+
+  const birthDate = new Date(birthday);
+  const today = new Date();
+
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  const dayDiff = today.getDate() - birthDate.getDate();
+
+  // Якщо день народження ще не настав у цьому році — віднімаємо 1 рік
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    age--;
+  }
+
+  return age;
+};
+
 const NannyCard = ({ nanny }) => {
   return (
     <div className={css.nannyCard}>
@@ -29,7 +47,8 @@ const NannyCard = ({ nanny }) => {
         </div>
         <ul className={css.descriptionList}>
           <li className={css.item}>
-            Age: <span className={css.span}>{nanny.age || 'N/A'}</span>
+            Age:{' '}
+            <span className={css.span}>{calculateAge(nanny.birthday)}</span>
           </li>
           <li className={css.item}>
             Experience: <span className={css.span}>{nanny.experience}</span>
