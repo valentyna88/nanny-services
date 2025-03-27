@@ -44,13 +44,19 @@
   text-align: center;
 }
 .descriptionList {
+  display: flex;
+  flex-wrap: wrap;
   padding-bottom: 24px;
   text-align: left;
 }
 .item {
+  border-radius: 24px;
+  padding: 8px 16px;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
   font-weight: 500;
   line-height: 1.5;
-  color: var(--text-color);
+  margin-bottom: 8px;
 }
 .descriptionList .item:first-child .span {
   text-decoration: underline;
