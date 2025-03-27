@@ -40,7 +40,7 @@
 }
 .info {
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
   text-align: center;
 }
 .descriptionList {
@@ -73,8 +73,13 @@
   }
 }
 
-@media screen and (min-width: 1440) {
+@media screen and (min-width: 1440px) {
   .nannyCard {
     width: 1184px;
+  }
+  .nannyInfoWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 }

@@ -16,14 +16,16 @@ const NannyCard = ({ nanny }) => {
       </div>
 
       <div className={css.nannyInfo}>
-        <div className={css.name}>
-          <Text variant="nanny">Nanny</Text>
-          <Title variant="name">{nanny.name}</Title>
-        </div>
-        <div className={css.info}>
-          <Text variant="bold">{nanny.location}</Text>
-          <Text variant="bold">Rating: {nanny.rating}</Text>
-          <Text variant="bold">Price / 1 hour: {nanny.price_per_hour}$</Text>
+        <div className={css.nannyInfoWrapper}>
+          <div className={css.name}>
+            <Text variant="nanny">Nanny</Text>
+            <Title variant="name">{nanny.name}</Title>
+          </div>
+          <div className={css.info}>
+            <Text variant="bold">{nanny.location}</Text>
+            <Text variant="bold">Rating: {nanny.rating}</Text>
+            <Text variant="bold">Price / 1 hour: {nanny.price_per_hour}$</Text>
+          </div>
         </div>
         <ul className={css.descriptionList}>
           <li className={css.item}>
