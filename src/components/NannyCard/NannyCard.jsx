@@ -39,10 +39,27 @@ const NannyCard = ({ nanny }) => {
             <Title variant="name">{nanny.name}</Title>
           </div>
           <div className={css.info}>
-            <Text variant="bold">{nanny.location}</Text>
-            <Text variant="bold">Rating: {nanny.rating}</Text>
-            <Text variant="bold">Price / 1 hour: {nanny.price_per_hour}$</Text>
-            <button type="button">
+            <ul className={css.infoList}>
+              <li className={css.infoItem}>
+                <svg width={16} height={16} className={css.mapIcon}>
+                  <use xlinkHref={`${sprite}#icon-map-pin`}></use>
+                </svg>
+                <Text variant="bold">{nanny.location}</Text>
+              </li>
+              <li className={css.infoItem}>
+                <svg width={16} height={16}>
+                  <use xlinkHref={`${sprite}#icon-Star-2`}></use>
+                </svg>
+                <Text variant="bold">Rating: {nanny.rating}</Text>
+              </li>
+              <li>
+                <Text variant="bold">
+                  Price / 1 hour:{' '}
+                  <span className={css.price}>{nanny.price_per_hour}$</span>
+                </Text>
+              </li>
+            </ul>
+            <button type="button" className={css.heartBtn}>
               <svg width={26} height={26} className={css.heartIcon}>
                 <use xlinkHref={`${sprite}#icon-heart`}></use>
               </svg>
