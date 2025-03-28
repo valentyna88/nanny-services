@@ -38,6 +38,14 @@
   gap: 10px;
   text-align: center;
 }
+.heartIcon {
+  stroke: var(--text-color-dark);
+  fill: transparent;
+  transition: fill var(--transition);
+}
+.heartIcon:hover {
+  fill: var(--primary-color);
+}
 .descriptionList {
   display: flex;
   flex-wrap: wrap;
@@ -84,6 +92,7 @@
   .nannyInfoWrapper {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
   }
 }

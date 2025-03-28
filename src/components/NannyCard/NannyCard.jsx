@@ -4,7 +4,7 @@ import sprite from '../../assets/sprite.svg';
 import css from './NannyCard.module.css';
 
 const calculateAge = birthday => {
-  if (!birthday) return 'N/A'; // Якщо дати народження немає
+  if (!birthday) return 'N/A';
 
   const birthDate = new Date(birthday);
   const today = new Date();
@@ -13,7 +13,6 @@ const calculateAge = birthday => {
   const monthDiff = today.getMonth() - birthDate.getMonth();
   const dayDiff = today.getDate() - birthDate.getDate();
 
-  // Якщо день народження ще не настав у цьому році — віднімаємо 1 рік
   if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
     age--;
   }
@@ -43,6 +42,11 @@ const NannyCard = ({ nanny }) => {
             <Text variant="bold">{nanny.location}</Text>
             <Text variant="bold">Rating: {nanny.rating}</Text>
             <Text variant="bold">Price / 1 hour: {nanny.price_per_hour}$</Text>
+            <button type="button">
+              <svg width={26} height={26} className={css.heartIcon}>
+                <use xlinkHref={`${sprite}#icon-heart`}></use>
+              </svg>
+            </button>
           </div>
         </div>
         <ul className={css.descriptionList}>
