@@ -28,15 +28,31 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 12px;
 }
 .name {
   text-align: center;
 }
 .info {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
   text-align: center;
+}
+.infoList {
+  display: flex;
+  gap: 15px;
+}
+.mapIcon {
+  stroke: var(--text-color-dark);
+  fill: transparent;
+}
+.price {
+  color: var(--price-color);
+}
+.heartBtn {
+  display: flex;
+  align-items: center;
 }
 .heartIcon {
   stroke: var(--text-color-dark);
@@ -49,8 +65,9 @@
 .descriptionList {
   display: flex;
   flex-wrap: wrap;
-  padding-bottom: 24px;
+  gap: 8px;
   text-align: left;
+  margin: 24px 0;
 }
 .item {
   border-radius: 24px;
@@ -59,7 +76,6 @@
   color: var(--text-color);
   font-weight: 500;
   line-height: 1.5;
-  margin-bottom: 8px;
 }
 .descriptionList .item:first-child .span {
   text-decoration: underline;
@@ -78,6 +94,14 @@
   }
   .name {
     text-align: left;
+  }
+  .infoList {
+    align-items: flex-end;
+  }
+  .infoItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
   .descriptionList {
     display: flex;
