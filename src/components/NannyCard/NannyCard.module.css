@@ -83,6 +83,13 @@
 .span {
   color: var(--text-color-dark);
 }
+.readMore {
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: underline;
+  color: var(--text-color-dark);
+  margin-top: 14px;
+}
 
 @media screen and (min-width: 768px) {
   .nannyCard {
@@ -111,6 +118,7 @@
 
 @media screen and (min-width: 1440px) {
   .nannyCard {
+    width: 1184px;
     display: flex;
   }
   .nannyInfoWrapper {

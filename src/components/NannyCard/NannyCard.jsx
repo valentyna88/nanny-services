@@ -86,6 +86,10 @@ const NannyCard = ({ nanny }) => {
           </li>
         </ul>
         <Text variant="light">{nanny.about}</Text>
+
+        <button type="button" className={css.readMore}>
+          Read more
+        </button>
       </div>
     </div>
   );
