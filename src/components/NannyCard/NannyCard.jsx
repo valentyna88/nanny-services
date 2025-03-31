@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Text from '../ui/Text/Text';
 import Title from '../ui/Title/Title';
 import Button from '../ui/Button/Button';
@@ -22,6 +23,8 @@ const calculateAge = birthday => {
 };
 
 const NannyCard = ({ nanny }) => {
+  const [showReviews, setShowReviews] = useState(false);
+
   return (
     <div className={css.nannyCard}>
       <div className={css.avatarWrapper}>
@@ -88,41 +91,48 @@ const NannyCard = ({ nanny }) => {
         </ul>
         <Text variant="light">{nanny.about}</Text>
 
-        <button type="button" className={css.readMore}>
-          Read more
-        </button>
+        {!showReviews && (
+          <button
+            type="button"
+            className={css.readMore}
+            onClick={() => setShowReviews(true)}
+          >
+            Read more
+          </button>
+        )}
 
-        <div className={css.reviews}>
-          <ul className={css.reviewsList}>
-            {nanny.reviews && Object.keys(nanny.reviews).length > 0 ? (
-              Object.entries(nanny.reviews).map(([reviewId, review]) => (
-                <li className={css.reviewItem} key={reviewId}>
-                  <div className={css.reviewHeader}>
-                    <div className={css.initial}>
-                      {review.reviewer.charAt(0).toUpperCase()}
+        {showReviews && (
+          <div className={css.reviews}>
+            <ul className={css.reviewsList}>
+              {nanny.reviews && Object.keys(nanny.reviews).length > 0 ? (
+                Object.entries(nanny.reviews).map(([reviewId, review]) => (
+                  <li className={css.reviewItem} key={reviewId}>
+                    <div className={css.reviewHeader}>
+                      <div className={css.initial}>
+                        {review.reviewer.charAt(0).toUpperCase()}
+                      </div>
+                      <div>
+                        <p>{review.reviewer}</p>
+                        <p className={css.reviewRating}>
+                          <svg width={16} height={16}>
+                            <use xlinkHref={`${sprite}#icon-Star-2`}></use>
+                          </svg>
+                          {review.rating}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p>{review.reviewer}</p>
-                      <p className={css.reviewRating}>
-                        <svg width={16} height={16}>
-                          <use xlinkHref={`${sprite}#icon-Star-2`}></use>
-                        </svg>
-                        {review.rating}
-                      </p>
-                    </div>
-                  </div>
-                  <p className={css.comment}>{review.comment}</p>
-                </li>
-              ))
-            ) : (
-              <p>No reviews yet</p>
-            )}
-          </ul>
-
-          <Button type="button" variant="filled">
-            Make an appointment
-          </Button>
-        </div>
+                    <p className={css.comment}>{review.comment}</p>
+                  </li>
+                ))
+              ) : (
+                <p>No reviews yet</p>
+              )}
+            </ul>
+            <Button type="button" variant="filled">
+              Make an appointment
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
