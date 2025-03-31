@@ -1,5 +1,6 @@
 import Text from '../ui/Text/Text';
 import Title from '../ui/Title/Title';
+import Button from '../ui/Button/Button';
 import sprite from '../../assets/sprite.svg';
 import css from './NannyCard.module.css';
 
@@ -90,6 +91,38 @@ const NannyCard = ({ nanny }) => {
         <button type="button" className={css.readMore}>
           Read more
         </button>
+
+        <div className={css.reviews}>
+          <ul className={css.reviewsList}>
+            {nanny.reviews && Object.keys(nanny.reviews).length > 0 ? (
+              Object.entries(nanny.reviews).map(([reviewId, review]) => (
+                <li className={css.reviewItem} key={reviewId}>
+                  <div className={css.reviewHeader}>
+                    <div className={css.initial}>
+                      {review.reviewer.charAt(0).toUpperCase()}
+                    </div>
+                    <div>
+                      <p>{review.reviewer}</p>
+                      <p className={css.reviewRating}>
+                        <svg width={16} height={16}>
+                          <use xlinkHref={`${sprite}#icon-Star-2`}></use>
+                        </svg>
+                        {review.rating}
+                      </p>
+                    </div>
+                  </div>
+                  <p className={css.comment}>{review.comment}</p>
+                </li>
+              ))
+            ) : (
+              <p>No reviews yet</p>
+            )}
+          </ul>
+
+          <Button type="button" variant="filled">
+            Make an appointment
+          </Button>
+        </div>
       </div>
     </div>
   );
