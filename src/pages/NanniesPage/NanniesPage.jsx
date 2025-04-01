@@ -1,30 +1,25 @@
-import { useEffect, useState } from 'react';
-import { ref, get } from 'firebase/database';
-import { database } from '../../firebase';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchNannies } from '../../redux/nannies/operations';
+import {
+  selectError,
+  selectIsLoading,
+  selectNannies,
+} from '../../redux/nannies/selectors';
 import NannyList from '../../components/NannyList/NannyList';
 
 const NanniesPage = () => {
-  const [nannies, setNannies] = useState([]);
+  const dispatch = useDispatch();
+  const nannies = useSelector(selectNannies);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
-    const fetchNannies = async () => {
-      try {
-        const nanniesRef = ref(database, 'babysitters');
-        const snapshot = await get(nanniesRef);
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          const formattedData = Object.entries(data).map(([id, nanny]) => ({
-            id,
-            ...nanny,
-          }));
-          setNannies(formattedData);
-        }
-      } catch (error) {
-        console.error('Loading failed:', error);
-      }
-    };
-    fetchNannies();
-  }, []);
+    dispatch(fetchNannies());
+  }, [dispatch]);
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return <NannyList nannies={nannies} />;
 };
