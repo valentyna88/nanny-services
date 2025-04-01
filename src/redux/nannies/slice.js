@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchNannies } from './operations';
 
 const initialState = {
   items: [],
@@ -9,12 +10,22 @@ const initialState = {
 const nanniesSlice = createSlice({
   name: 'nannies',
   initialState,
-  reducers: {
-    setNannies(state, action) {
-      state.items = action.payload;
-    },
+  reducers: {},
+  extraReducers: builder => {
+    builder
+      .addCase(fetchNannies.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchNannies.fulfilled, (state, action) => {
+        state.items = action.payload;
+        state.loading = false;
+      })
+      .addCase(fetchNannies.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
 
-export const { setNannies } = nanniesSlice.actions;
 export default nanniesSlice.reducer;
