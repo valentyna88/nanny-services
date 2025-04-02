@@ -50,7 +50,7 @@
 .price {
   color: var(--price-color);
 }
-.heartBtn {
+.favoriteButton {
   display: flex;
   align-items: center;
 }

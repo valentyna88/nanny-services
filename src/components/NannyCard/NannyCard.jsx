@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFavorites } from '../../redux/favorites/selectors';
+import { addFavorite, removeFavorite } from '../../redux/favorites/slice';
 import Text from '../ui/Text/Text';
 import Title from '../ui/Title/Title';
 import Button from '../ui/Button/Button';
@@ -23,6 +26,19 @@ const calculateAge = birthday => {
 };
 
 const NannyCard = ({ nanny }) => {
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
+
+  const isFavorite = favorites.some(fav => fav.id === nanny.id);
+
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      dispatch(removeFavorite(nanny.id));
+    } else {
+      dispatch(addFavorite(nanny));
+    }
+  };
+
   const [showReviews, setShowReviews] = useState(false);
 
   return (
@@ -63,9 +79,22 @@ const NannyCard = ({ nanny }) => {
                 </Text>
               </li>
             </ul>
-            <button type="button" className={css.heartBtn}>
+            <button
+              type="button"
+              className={css.favoriteButton}
+              onClick={handleFavoriteClick}
+              aria-label={
+                isFavorite ? 'Remove from favorites' : 'Add to favorites'
+              }
+            >
               <svg width={26} height={26} className={css.heartIcon}>
-                <use xlinkHref={`${sprite}#icon-heart`}></use>
+                <use
+                  xlinkHref={
+                    isFavorite
+                      ? `${sprite}#icon-heart-fill`
+                      : `${sprite}#icon-heart`
+                  }
+                ></use>
               </svg>
             </button>
           </div>

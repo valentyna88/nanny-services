@@ -9,7 +9,13 @@ const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addFavorite(state, action) {
-      state.favorites.push(action.payload);
+      // state.favorites.push(action.payload);
+      const exists = state.favorites.some(
+        nanny => nanny.id === action.payload.id
+      );
+      if (!exists) {
+        state.favorites.push(action.payload);
+      }
     },
     removeFavorite(state, action) {
       state.favorites = state.favorites.filter(
@@ -20,4 +26,4 @@ const favoritesSlice = createSlice({
 });
 
 export const { addFavorite, removeFavorite } = favoritesSlice.actions;
-export default favoritesSlice.reducer;
+export const favoritesReducer = favoritesSlice.reducer;
