@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchNannies } from '../../redux/nannies/operations';
+import { resetNannies, setSortBy } from '../../redux/nannies/slice';
 import sprite from '../../assets/sprite.svg';
 import css from './Filter.module.css';
 
@@ -12,21 +15,24 @@ const options = [
   { label: 'Show all', value: 'all' },
 ];
 
-const Filter = ({ onFilter }) => {
-  const [selected, setSelected] = useState(options[0].value);
+const Filter = () => {
+  const dispatch = useDispatch();
+  const [selected, setSelected] = useState('all');
   const [open, setOpen] = useState(false);
 
   const handleSelect = value => {
     setSelected(value);
     setOpen(false);
-    onFilter(value);
+    dispatch(setSortBy(value));
+    dispatch(resetNannies());
+    dispatch(fetchNannies({ lastKey: null, page: 1, sortBy: value }));
   };
 
   return (
     <div className={`${css.selectWrapper} ${open ? css.active : ''}`}>
       <label className={css.label}>Filters</label>
       <div className={css.selectedOption} onClick={() => setOpen(!open)}>
-        {options.find(opt => opt.value === selected).label}
+        {options.find(opt => opt.value === selected)?.label || 'Show all'}
         <svg className={css.icon}>
           <use xlinkHref={`${sprite}#icon-chevron-down`}></use>
         </svg>

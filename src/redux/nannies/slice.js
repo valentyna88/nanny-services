@@ -6,6 +6,7 @@ const initialState = {
   page: 1,
   hasMore: false,
   lastKey: null,
+  sortBy: 'Show all',
   isLoading: false,
   error: null,
 };
@@ -23,6 +24,9 @@ const nanniesSlice = createSlice({
     },
     incrementPage: state => {
       state.page += 1;
+    },
+    setSortBy: (state, action) => {
+      state.sortBy = action.payload;
     },
   },
   extraReducers: builder => {
@@ -50,5 +54,5 @@ const nanniesSlice = createSlice({
   },
 });
 
-export const { resetNannies, incrementPage } = nanniesSlice.actions;
+export const { resetNannies, incrementPage, setSortBy } = nanniesSlice.actions;
 export default nanniesSlice.reducer;

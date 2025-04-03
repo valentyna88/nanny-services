@@ -11,7 +11,7 @@ import {
 
 export const fetchNannies = createAsyncThunk(
   'nannies/fetchNannies',
-  async ({ lastKey = null }, { rejectWithValue }) => {
+  async ({ lastKey = null, sortBy = 'asc' }, { rejectWithValue }) => {
     try {
       const limit = 3;
 
@@ -39,6 +39,20 @@ export const fetchNannies = createAsyncThunk(
       snapshot.forEach(child => {
         data.push({ id: child.key, ...child.val() });
       });
+
+      if (sortBy === 'asc') {
+        data.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (sortBy === 'desc') {
+        data.sort((a, b) => b.name.localeCompare(a.name));
+      } else if (sortBy === 'lt10') {
+        data = data.filter(nanny => nanny.price < 10);
+      } else if (sortBy === 'gt10') {
+        data = data.filter(nanny => nanny.price >= 10);
+      } else if (sortBy === 'popular') {
+        data.sort((a, b) => b.rating - a.rating);
+      } else if (sortBy === 'notPopular') {
+        data.sort((a, b) => a.rating - b.rating);
+      }
 
       const newLastKey = data.length > 0 ? data[data.length - 1].id : null;
 

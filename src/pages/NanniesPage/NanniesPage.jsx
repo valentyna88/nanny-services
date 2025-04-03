@@ -9,6 +9,7 @@ import {
   selectLastKey,
   selectNannies,
   selectPage,
+  selectSortBy,
 } from '../../redux/nannies/selectors';
 import NannyList from '../../components/NannyList/NannyList';
 import Filter from '../../components/Filter/Filter';
@@ -24,15 +25,16 @@ const NanniesPage = () => {
   const lastKey = useSelector(selectLastKey);
   const page = useSelector(selectPage);
   const hasMore = useSelector(selectHasMore);
+  const sortBy = useSelector(selectSortBy);
 
   useEffect(() => {
     dispatch(resetNannies());
-    dispatch(fetchNannies({ lastKey: null, page: 1 }));
+    dispatch(fetchNannies({ lastKey: null, page: 1, sortBy }));
   }, [dispatch]);
 
   const handleLoadMore = async () => {
     dispatch(incrementPage());
-    await dispatch(fetchNannies({ lastKey, page: page + 1 }));
+    await dispatch(fetchNannies({ lastKey, page: page + 1, sortBy }));
 
     window.scrollBy({
       top: window.innerHeight / 2,
