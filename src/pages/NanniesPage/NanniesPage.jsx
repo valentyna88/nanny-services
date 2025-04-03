@@ -12,6 +12,7 @@ import {
 } from '../../redux/nannies/selectors';
 import NannyList from '../../components/NannyList/NannyList';
 import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
+import css from './NanniesPage.module.css';
 
 const NanniesPage = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,9 @@ const NanniesPage = () => {
   return (
     <section>
       <NannyList nannies={nannies} />
-      {hasMore && !isLoading && <LoadMoreBtn onClick={handleLoadMore} />}
+      <div className={css.btnWrapper}>
+        {hasMore && !isLoading && <LoadMoreBtn onClick={handleLoadMore} />}
+      </div>
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
     </section>
