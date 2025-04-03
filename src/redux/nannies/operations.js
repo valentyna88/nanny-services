@@ -1,65 +1,52 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { database } from '../../firebase';
-import {
-  get,
-  ref,
-  query,
-  orderByKey,
-  startAfter,
-  limitToFirst,
-} from 'firebase/database';
+import { get, ref, query, orderByKey } from 'firebase/database';
 
 export const fetchNannies = createAsyncThunk(
   'nannies/fetchNannies',
-  async ({ lastKey = null, sortBy = 'asc' }, { rejectWithValue }) => {
+  async ({ lastKey = null, sortBy = 'all' }, { rejectWithValue }) => {
     try {
-      const limit = 3;
-
-      let baseQuery = query(
-        ref(database, 'babysitters'),
-        orderByKey(),
-        limitToFirst(limit)
+      const snapshot = await get(
+        query(ref(database, 'babysitters'), orderByKey())
       );
 
-      if (lastKey) {
-        baseQuery = query(
-          ref(database, 'babysitters'),
-          orderByKey(),
-          startAfter(lastKey),
-          limitToFirst(limit)
-        );
-      }
-
-      const snapshot = await get(baseQuery);
       if (!snapshot.exists()) {
         return { babysitters: [], lastKey: null, hasMore: false };
       }
 
-      const data = [];
+      let allData = [];
       snapshot.forEach(child => {
-        data.push({ id: child.key, ...child.val() });
+        allData.push({ id: child.key, ...child.val() });
       });
 
       if (sortBy === 'asc') {
-        data.sort((a, b) => a.name.localeCompare(b.name));
+        allData.sort((a, b) => a.name.localeCompare(b.name));
       } else if (sortBy === 'desc') {
-        data.sort((a, b) => b.name.localeCompare(a.name));
+        allData.sort((a, b) => b.name.localeCompare(a.name));
       } else if (sortBy === 'lt10') {
-        data = data.filter(nanny => nanny.price < 10);
+        allData = allData.filter(nanny => nanny.price < 10);
       } else if (sortBy === 'gt10') {
-        data = data.filter(nanny => nanny.price >= 10);
+        allData = allData.filter(nanny => nanny.price >= 10);
       } else if (sortBy === 'popular') {
-        data.sort((a, b) => b.rating - a.rating);
+        allData.sort((a, b) => b.rating - a.rating);
       } else if (sortBy === 'notPopular') {
-        data.sort((a, b) => a.rating - b.rating);
+        allData.sort((a, b) => a.rating - b.rating);
       }
 
-      const newLastKey = data.length > 0 ? data[data.length - 1].id : null;
+      const limit = 3;
+      const startIndex = lastKey
+        ? allData.findIndex(item => item.id === lastKey) + 1
+        : 0;
+      const paginatedData = allData.slice(startIndex, startIndex + limit);
+      const newLastKey =
+        paginatedData.length > 0
+          ? paginatedData[paginatedData.length - 1].id
+          : null;
 
       return {
-        babysitters: data,
+        babysitters: paginatedData,
         lastKey: newLastKey,
-        hasMore: data.length === limit,
+        hasMore: startIndex + limit < allData.length,
       };
     } catch (error) {
       return rejectWithValue(error.message);

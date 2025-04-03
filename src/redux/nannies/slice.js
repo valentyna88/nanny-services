@@ -6,7 +6,7 @@ const initialState = {
   page: 1,
   hasMore: false,
   lastKey: null,
-  sortBy: 'Show all',
+  sortBy: 'all',
   isLoading: false,
   error: null,
 };
