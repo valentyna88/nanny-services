@@ -1,27 +1,50 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchNannies } from '../../redux/nannies/operations';
+import { resetNannies, incrementPage } from '../../redux/nannies/slice';
 import {
   selectError,
+  selectHasMore,
   selectIsLoading,
+  selectLastKey,
   selectNannies,
+  selectPage,
 } from '../../redux/nannies/selectors';
 import NannyList from '../../components/NannyList/NannyList';
+import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
 
 const NanniesPage = () => {
   const dispatch = useDispatch();
   const nannies = useSelector(selectNannies);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  const lastKey = useSelector(selectLastKey);
+  const page = useSelector(selectPage);
+  const hasMore = useSelector(selectHasMore);
 
   useEffect(() => {
-    dispatch(fetchNannies());
+    dispatch(resetNannies());
+    dispatch(fetchNannies({ lastKey: null, page: 1 }));
   }, [dispatch]);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  const handleLoadMore = async () => {
+    dispatch(incrementPage());
+    await dispatch(fetchNannies({ lastKey, page: page + 1 }));
 
-  return <NannyList nannies={nannies} />;
+    window.scrollBy({
+      top: window.innerHeight / 2,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <section>
+      <NannyList nannies={nannies} />
+      {hasMore && !isLoading && <LoadMoreBtn onClick={handleLoadMore} />}
+      {isLoading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+    </section>
+  );
 };
 
 export default NanniesPage;

@@ -3,29 +3,52 @@ import { fetchNannies } from './operations';
 
 const initialState = {
   items: [],
-  loading: false,
+  page: 1,
+  hasMore: false,
+  lastKey: null,
+  isLoading: false,
   error: null,
 };
 
 const nanniesSlice = createSlice({
   name: 'nannies',
   initialState,
-  reducers: {},
+  reducers: {
+    resetNannies: state => {
+      state.items = [];
+      state.page = 1;
+      state.hasMore = false;
+      state.lastKey = null;
+      state.error = null;
+    },
+    incrementPage: state => {
+      state.page += 1;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchNannies.pending, state => {
-        state.loading = true;
+        state.isLoading = true;
         state.error = null;
       })
       .addCase(fetchNannies.fulfilled, (state, action) => {
-        state.items = action.payload;
-        state.loading = false;
+        state.isLoading = false;
+        state.hasMore = action.payload.hasMore;
+        state.lastKey = action.payload.lastKey || null;
+
+        const newItems = action.payload.babysitters.filter(
+          nanny => !state.items.some(existing => existing.id === nanny.id)
+        );
+        if (newItems.length > 0) {
+          state.items.push(...newItems);
+        }
       })
       .addCase(fetchNannies.rejected, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.error = action.payload;
       });
   },
 });
 
+export const { resetNannies, incrementPage } = nanniesSlice.actions;
 export default nanniesSlice.reducer;
