@@ -45,7 +45,13 @@ const NanniesPage = () => {
   return (
     <section>
       <Filter />
-      <NannyList nannies={nannies} />
+      {!isLoading && nannies.length === 0 ? (
+        <p className={css.noResults}>
+          No nannies found for the selected filter.
+        </p>
+      ) : (
+        <NannyList nannies={nannies} />
+      )}
       <div className={css.btnWrapper}>
         {hasMore && !isLoading && <LoadMoreBtn onClick={handleLoadMore} />}
       </div>

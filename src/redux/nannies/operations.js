@@ -24,9 +24,9 @@ export const fetchNannies = createAsyncThunk(
       } else if (sortBy === 'desc') {
         allData.sort((a, b) => b.name.localeCompare(a.name));
       } else if (sortBy === 'lt10') {
-        allData = allData.filter(nanny => nanny.price < 10);
+        allData = allData.filter(nanny => nanny.price_per_hour < 10);
       } else if (sortBy === 'gt10') {
-        allData = allData.filter(nanny => nanny.price >= 10);
+        allData = allData.filter(nanny => nanny.price_per_hour >= 10);
       } else if (sortBy === 'popular') {
         allData.sort((a, b) => b.rating - a.rating);
       } else if (sortBy === 'notPopular') {
