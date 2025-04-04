@@ -7,7 +7,6 @@ import {
 } from 'firebase/auth';
 import { auth } from '../../firebase';
 
-// РЕЄСТРАЦІЯ
 export const register = createAsyncThunk(
   'auth/register',
   async ({ email, password }, thunkAPI) => {
@@ -24,7 +23,6 @@ export const register = createAsyncThunk(
   }
 );
 
-// ЛОГІН
 export const login = createAsyncThunk(
   'auth/login',
   async ({ email, password }, thunkAPI) => {
@@ -41,7 +39,6 @@ export const login = createAsyncThunk(
   }
 );
 
-// ЛОГАУТ
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await signOut(auth);
@@ -50,7 +47,6 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
-// ОТРИМАННЯ ПОТУЖНОГО КОРИСТУВАЧА
 export const getCurrentUser = createAsyncThunk(
   'auth/getCurrentUser',
   async (_, thunkAPI) => {
