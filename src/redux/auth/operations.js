@@ -7,23 +7,26 @@ import {
 } from 'firebase/auth';
 import { auth } from '../../firebase';
 
-export const register = createAsyncThunk(
+export const registerUser = createAsyncThunk(
   'auth/register',
   async ({ email, password }, thunkAPI) => {
     try {
+      console.log('Registering user with:', { email, password });
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      return userCredential.user;
+      const { uid, email: userEmail } = userCredential.user;
+      return { uid, email: userEmail };
     } catch (error) {
+      console.error('Firebase registration error:', error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const login = createAsyncThunk(
+export const loginUser = createAsyncThunk(
   'auth/login',
   async ({ email, password }, thunkAPI) => {
     try {
@@ -32,20 +35,24 @@ export const login = createAsyncThunk(
         email,
         password
       );
-      return userCredential.user;
+      const { uid, email: userEmail } = userCredential.user;
+      return { uid, email: userEmail };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
-  try {
-    await signOut(auth);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+export const logoutUser = createAsyncThunk(
+  'auth/logout',
+  async (_, thunkAPI) => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
 
 export const getCurrentUser = createAsyncThunk(
   'auth/getCurrentUser',
@@ -53,7 +60,8 @@ export const getCurrentUser = createAsyncThunk(
     return new Promise((resolve, reject) => {
       onAuthStateChanged(auth, user => {
         if (user) {
-          resolve(user);
+          const { uid, email } = user;
+          resolve({ uid, email });
         } else {
           reject('No user found');
         }

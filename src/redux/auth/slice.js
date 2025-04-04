@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logout, getCurrentUser } from './operations';
+import {
+  registerUser,
+  loginUser,
+  logoutUser,
+  getCurrentUser,
+} from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -35,23 +40,23 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(register.pending, handlePending)
-      .addCase(register.fulfilled, (state, action) => {
+      .addCase(registerUser.pending, handlePending)
+      .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
         state.user = action.payload;
       })
-      .addCase(register.rejected, handleRejected)
+      .addCase(registerUser.rejected, handleRejected)
 
-      .addCase(login.pending, handlePending)
-      .addCase(login.fulfilled, (state, action) => {
+      .addCase(loginUser.pending, handlePending)
+      .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
         state.user = action.payload;
       })
-      .addCase(login.rejected, handleRejected)
+      .addCase(loginUser.rejected, handleRejected)
 
-      .addCase(logout.fulfilled, state => {
+      .addCase(logoutUser.fulfilled, state => {
         state.user = null;
         state.isLoggedIn = false;
         state.favorites = [];
