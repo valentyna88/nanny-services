@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import Loader from './Loader/Loader';
 import Header from './Header/Header';
 import Container from './ui/Container/Container';
+import ModalContainer from './ModalContainer/ModalContainer';
 
 const Layout = () => {
   return (
@@ -25,6 +26,7 @@ const Layout = () => {
           </Suspense>
         </Container>
       </main>
+      <ModalContainer />
     </>
   );
 };
