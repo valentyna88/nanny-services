@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { favoritesReducer } from './favorites/slice';
+import authReducer from './auth/slice';
 import nanniesReducer from './nannies/slice';
 import storage from 'redux-persist/lib/storage';
 
@@ -24,6 +25,7 @@ export const store = configureStore({
   reducer: {
     nannies: nanniesReducer,
     favorites: persistedReducer,
+    auth: authReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
