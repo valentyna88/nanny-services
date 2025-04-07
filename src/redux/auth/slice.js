@@ -44,7 +44,11 @@ const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
-        state.user = action.payload;
+        state.user = {
+          uid: action.payload.uid,
+          email: action.payload.email,
+          name: action.payload.name,
+        };
       })
       .addCase(registerUser.rejected, handleRejected)
 
@@ -52,7 +56,11 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
-        state.user = action.payload;
+        state.user = {
+          uid: action.payload.uid,
+          email: action.payload.email,
+          name: action.payload.name,
+        };
       })
       .addCase(loginUser.rejected, handleRejected)
 
@@ -62,7 +70,11 @@ const authSlice = createSlice({
         state.favorites = [];
       })
       .addCase(getCurrentUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = {
+          uid: action.payload.uid,
+          email: action.payload.email,
+          name: action.payload.name,
+        };
         state.isLoggedIn = true;
       });
   },

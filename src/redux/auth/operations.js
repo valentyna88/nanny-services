@@ -4,21 +4,27 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  updateProfile,
 } from 'firebase/auth';
 import { auth } from '../../firebase';
 
 export const registerUser = createAsyncThunk(
   'auth/register',
-  async ({ email, password }, thunkAPI) => {
+  async ({ name, email, password }, thunkAPI) => {
     try {
-      console.log('Registering user with:', { email, password });
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      const { uid, email: userEmail } = userCredential.user;
-      return { uid, email: userEmail };
+
+      await updateProfile(userCredential.user, {
+        displayName: name,
+      });
+
+      const { uid, email: userEmail, displayName } = userCredential.user;
+
+      return { uid, email: userEmail, name: displayName };
     } catch (error) {
       console.error('Firebase registration error:', error);
       return thunkAPI.rejectWithValue(error.message);
@@ -35,8 +41,9 @@ export const loginUser = createAsyncThunk(
         email,
         password
       );
-      const { uid, email: userEmail } = userCredential.user;
-      return { uid, email: userEmail };
+      const { uid, email: userEmail, displayName } = userCredential.user;
+
+      return { uid, email: userEmail, name: displayName };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -60,8 +67,8 @@ export const getCurrentUser = createAsyncThunk(
     return new Promise((resolve, reject) => {
       onAuthStateChanged(auth, user => {
         if (user) {
-          const { uid, email } = user;
-          resolve({ uid, email });
+          const { uid, email, displayName } = user;
+          resolve({ uid, email, name: displayName });
         } else {
           reject('No user found');
         }
