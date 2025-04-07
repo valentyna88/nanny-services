@@ -1,6 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectors';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import Navigation from '../Navigation/Navigation';
 import AuthBtn from '../AuthBtn/AuthBtn';
@@ -12,6 +14,9 @@ const Header = () => {
   const location = useLocation();
 
   const isHomePage = location.pathname === '/';
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const user = useSelector(selectUser);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -27,7 +32,6 @@ const Header = () => {
         [css.homeHeader]: isHomePage,
       })}
     >
-      {/* Mobile Menu */}
       <div className={css.mobileHeader}>
         <Link to="/" className={css.logo}>
           Nanny.Services
@@ -37,14 +41,14 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Desktop Navigation */}
       <div className={css.wrapper}>
         <Link to="/" className={css.logo}>
           Nanny.Services
         </Link>
-        <Navigation />
-        <AuthBtn />
+        <Navigation isLoggedIn={isLoggedIn} closeMenu={closeMenu} />
+        <AuthBtn isLoggedIn={isLoggedIn} user={user} />
       </div>
+
       {menuOpen && <MobileMenu closeMenu={closeMenu} />}
     </header>
   );

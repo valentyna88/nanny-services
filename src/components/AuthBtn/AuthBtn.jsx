@@ -1,11 +1,26 @@
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../redux/modal/slice';
-import { NavLink } from 'react-router-dom';
+import { logoutUser } from '../../redux/auth/operations';
 import Button from '../ui/Button/Button';
 import css from './AuthBtn.module.css';
 
-const AuthBtn = () => {
+const AuthBtn = ({ isLoggedIn, user }) => {
   const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
+
+  if (isLoggedIn) {
+    return (
+      <div className={css.userWrapper}>
+        <span className={css.userName}>Hi, {user?.name || 'User'}</span>
+        <Button variant="outline" onClick={handleLogout}>
+          Log out
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className={css.authNav}>
