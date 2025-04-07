@@ -5,8 +5,11 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
 import App from './components/App/App';
+import Modal from 'react-modal';
 import 'modern-normalize';
 import './index.css';
+
+Modal.setAppElement('#root');
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>

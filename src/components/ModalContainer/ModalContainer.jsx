@@ -15,7 +15,6 @@ const ModalContainer = () => {
       contentLabel="Modal"
       overlayClassName={css.overlay}
       className={css.modal}
-      ariaHideApp={false}
     >
       {modalType === 'login' && <AuthForm />}
       {modalType === 'register' && <RegistrationForm />}
