@@ -2,3 +2,20 @@
   display: flex;
   gap: 8px;
 }
+.userWrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.userName {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  letter-spacing: -0.01em;
+  color: var(--secondary-bg);
+}

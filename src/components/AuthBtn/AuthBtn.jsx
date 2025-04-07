@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../redux/modal/slice';
 import { logoutUser } from '../../redux/auth/operations';
+import sprite from '../../assets/sprite.svg';
 import Button from '../ui/Button/Button';
 import css from './AuthBtn.module.css';
 
@@ -14,7 +15,12 @@ const AuthBtn = ({ isLoggedIn, user }) => {
   if (isLoggedIn) {
     return (
       <div className={css.userWrapper}>
-        <span className={css.userName}>Hi, {user?.name || 'User'}</span>
+        <div className={css.user}>
+          <svg width={40} height={40}>
+            <use xlinkHref={`${sprite}#icon-user`}></use>
+          </svg>
+          <div className={css.userName}>{user?.name || 'User'}</div>
+        </div>
         <Button variant="outline" onClick={handleLogout}>
           Log out
         </Button>
