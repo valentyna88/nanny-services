@@ -9,7 +9,11 @@ const AuthBtn = () => {
 
   return (
     <div className={css.authNav}>
-      <Button type="button" variant="outline" to="/login" as={NavLink}>
+      <Button
+        type="button"
+        variant="outline"
+        onClick={() => dispatch(openModal('login'))}
+      >
         Log In
       </Button>
       <Button

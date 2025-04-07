@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../redux/modal/slice';
 import Modal from 'react-modal';
-import AuthForm from '../AuthForm/AuthForm';
+import LoginForm from '../LoginForm/LoginForm';
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import css from './ModalContainer.module.css';
 
@@ -16,7 +16,7 @@ const ModalContainer = () => {
       overlayClassName={css.overlay}
       className={css.modal}
     >
-      {modalType === 'login' && <AuthForm />}
+      {modalType === 'login' && <LoginForm />}
       {modalType === 'register' && <RegistrationForm />}
       {modalType === 'appointment' && <AppointmentForm />}
     </Modal>
