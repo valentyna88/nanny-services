@@ -1,0 +1,66 @@
+.btnClose {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.iconClose {
+  width: 20px;
+  height: 20px;
+  stroke: var(--text-color-dark);
+  transition: stroke var(--primary-transition);
+}
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+.input {
+  width: 100%;
+  border: 1px solid rgba(17, 16, 28, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px 16px;
+}
+.input::placeholder {
+  color: var(--text-color-dark);
+}
+.form > .input:not(:last-child) {
+  margin-bottom: 18px;
+}
+.passwordWrapper {
+  position: relative;
+}
+.eyeIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  stroke: var(--text-color-dark);
+  fill: none;
+}
+.error {
+  color: var(--error-message-color);
+  font-size: 12px;
+}
+button[type='submit'] {
+  margin-top: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .iconClose {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+}
