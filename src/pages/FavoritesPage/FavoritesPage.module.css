@@ -1,0 +1,12 @@
+.btnWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+  margin-bottom: 100px;
+}
+.noResults {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 20px;
+  color: var(--text-color-dark);
+}

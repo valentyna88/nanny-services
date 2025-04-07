@@ -28,7 +28,7 @@ const App = () => {
         <Route path="/nannies" element={<NanniesPage />} />
         <Route
           path="/favorites"
-          element={<PrivateRoute component={<FavoritesPage />} />}
+          element={<PrivateRoute component={FavoritesPage} />}
         />
       </Route>
       <Route path="*" element={<NotFoundPage />} />
