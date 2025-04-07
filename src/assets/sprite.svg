@@ -48,5 +48,9 @@
 <path fill="#fbfbfb" style="fill: var(--color1, #fbfbfb)" d="M8 0h16c4.418 0 8 3.582 8 8v16c0 4.418-3.582 8-8 8h-16c-4.418 0-8-3.582-8-8v-16c0-4.418 3.582-8 8-8z"></path>
 <path fill="#103931" style="fill: var(--color2, #103931)" d="M16 9.6c0.849 0 1.663 0.337 2.263 0.937s0.937 1.414 0.937 2.263-0.337 1.663-0.937 2.263c-0.6 0.6-1.414 0.937-2.263 0.937s-1.663-0.337-2.263-0.937c-0.6-0.6-0.937-1.414-0.937-2.263s0.337-1.663 0.937-2.263c0.6-0.6 1.414-0.937 2.263-0.937zM16 17.6c3.536 0 6.4 1.432 6.4 3.2v1.6h-12.8v-1.6c0-1.768 2.864-3.2 6.4-3.2z"></path>
 </symbol>
+<symbol id="icon-close" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.5" d="M24 8l-16 16"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.5" d="M8 8l16 16"></path>
+</symbol>
 </defs>
 </svg>
