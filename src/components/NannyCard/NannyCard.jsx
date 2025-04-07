@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFavorites } from '../../redux/favorites/selectors';
 import { addFavorite, removeFavorite } from '../../redux/favorites/slice';
+import { openModal } from '../../redux/modal/slice';
+import { toast } from 'react-hot-toast';
+import { getAuth } from 'firebase/auth';
 import Text from '../ui/Text/Text';
 import Title from '../ui/Title/Title';
 import Button from '../ui/Button/Button';
@@ -27,15 +30,32 @@ const calculateAge = birthday => {
 
 const NannyCard = ({ nanny }) => {
   const dispatch = useDispatch();
+
+  const onAppointmentClick = () => {
+    dispatch(openModal('appointment'));
+  };
+
   const favorites = useSelector(selectFavorites);
 
   const isFavorite = favorites.some(fav => fav.id === nanny.id);
 
   const handleFavoriteClick = () => {
+    const auth = getAuth();
+    const currentUser = auth.currentUser;
+
+    if (!currentUser) {
+      toast('Please log in to add a nanny to favorites', {
+        icon: '🔒',
+      });
+      return;
+    }
+
     if (isFavorite) {
       dispatch(removeFavorite(nanny.id));
+      toast.success('Removed from favorites');
     } else {
       dispatch(addFavorite(nanny));
+      toast.success('Added to favorites');
     }
   };
 
@@ -157,7 +177,7 @@ const NannyCard = ({ nanny }) => {
                 <p>No reviews yet</p>
               )}
             </ul>
-            <Button type="button" variant="filled">
+            <Button type="button" variant="filled" onClick={onAppointmentClick}>
               Make an appointment
             </Button>
           </div>
