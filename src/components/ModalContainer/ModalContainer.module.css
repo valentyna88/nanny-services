@@ -12,8 +12,9 @@
 }
 .modal {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
+  margin: 40px 0;
   width: 300px;
   border-radius: 30px;
   background-color: var(--secondary-bg);
