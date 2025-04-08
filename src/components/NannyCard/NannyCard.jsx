@@ -44,7 +44,7 @@ const NannyCard = ({ nanny }) => {
     const currentUser = auth.currentUser;
 
     if (!currentUser) {
-      toast('Please log in to add a nanny to favorites', {
+      toast('Please log in to access the Favorites page', {
         icon: '🔒',
       });
       return;

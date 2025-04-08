@@ -65,12 +65,16 @@ export const getCurrentUser = createAsyncThunk(
   'auth/getCurrentUser',
   async (_, thunkAPI) => {
     return new Promise((resolve, reject) => {
-      onAuthStateChanged(auth, user => {
+      const unsubscribe = onAuthStateChanged(auth, user => {
+        unsubscribe();
         if (user) {
-          const { uid, email, displayName } = user;
-          resolve({ uid, email, name: displayName });
+          resolve({
+            uid: user.uid,
+            email: user.email,
+            name: user.displayName,
+          });
         } else {
-          reject('No user found');
+          reject(thunkAPI.rejectWithValue('No user is logged in'));
         }
       });
     });

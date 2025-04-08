@@ -19,6 +19,7 @@ const handleRejected = (state, action) => {
 const initialState = {
   user: null,
   isLoggedIn: false,
+  isRefreshing: false,
   isLoading: false,
   error: null,
   favorites: [],
@@ -69,6 +70,9 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
         state.favorites = [];
       })
+      .addCase(getCurrentUser.pending, state => {
+        state.isRefreshing = true;
+      })
       .addCase(getCurrentUser.fulfilled, (state, action) => {
         state.user = {
           uid: action.payload.uid,
@@ -76,6 +80,10 @@ const authSlice = createSlice({
           name: action.payload.name,
         };
         state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(getCurrentUser.rejected, state => {
+        state.isRefreshing = false;
       });
   },
 });
