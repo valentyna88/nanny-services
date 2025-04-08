@@ -46,7 +46,6 @@ const RegistrationForm = () => {
   });
 
   const onSubmit = async ({ name, email, password }) => {
-    console.log('User registered:', { email, password });
     try {
       await dispatch(registerUser({ name, email, password }));
       reset();

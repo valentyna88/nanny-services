@@ -13,8 +13,20 @@
   color: var(--text-color-dark);
 }
 .modal {
-  font-size: 40px;
+  font-size: 25px;
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--text-color-dark);
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    font-size: 30px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .modal {
+    font-size: 40px;
+  }
 }
