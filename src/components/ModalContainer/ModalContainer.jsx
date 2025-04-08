@@ -10,8 +10,9 @@ import css from './ModalContainer.module.css';
 const ModalContainer = () => {
   const dispatch = useDispatch();
   const modalType = useSelector(state => state.modal.modalType);
-  const nannyId = useSelector(state => state.modal.nannyId);
-  const nanny = useSelector(state => selectNannyById(state, nannyId));
+  // const nannyId = useSelector(state => state.modal.nannyId);
+  // const nanny = useSelector(state => selectNannyById(state, nannyId));
+  const nanny = useSelector(state => state.modal.nanny);
 
   return (
     <Modal

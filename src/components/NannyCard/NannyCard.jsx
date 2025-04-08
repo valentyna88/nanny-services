@@ -32,7 +32,7 @@ const NannyCard = ({ nanny }) => {
   const dispatch = useDispatch();
 
   const onAppointmentClick = () => {
-    dispatch(openModal({ modalType: 'appointment', nannyId: nanny.id }));
+    dispatch(openModal({ modalType: 'appointment', nanny }));
   };
 
   const favorites = useSelector(selectFavorites);

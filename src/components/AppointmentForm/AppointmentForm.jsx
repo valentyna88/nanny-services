@@ -1,9 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { closeModal } from '../../redux/modal/slice';
-import { registerUser } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
 import * as yup from 'yup';
 import sprite from '../../assets/sprite.svg';
 import css from './AppointmentForm.module.css';

@@ -33,14 +33,14 @@ const AuthBtn = ({ isLoggedIn, user }) => {
       <Button
         type="button"
         variant="outline"
-        onClick={() => dispatch(openModal('login'))}
+        onClick={() => dispatch(openModal({ modalType: 'login' }))}
       >
         Log In
       </Button>
       <Button
         type="button"
         variant="filled"
-        onClick={() => dispatch(openModal('register'))}
+        onClick={() => dispatch(openModal({ modalType: 'register' }))}
       >
         Registration
       </Button>

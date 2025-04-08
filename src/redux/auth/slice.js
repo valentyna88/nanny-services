@@ -50,6 +50,7 @@ const authSlice = createSlice({
           email: action.payload.email,
           name: action.payload.name,
         };
+        state.isRefreshing = false;
       })
       .addCase(registerUser.rejected, handleRejected)
 
