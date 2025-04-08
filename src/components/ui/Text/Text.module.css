@@ -22,3 +22,9 @@
   line-height: 1.5;
   color: var(--text-color);
 }
+.yourNanny {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--text-color);
+}
