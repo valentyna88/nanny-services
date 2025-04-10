@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../redux/modal/slice';
-import { selectNannyById } from '../../redux/nannies/selectors';
 import Modal from 'react-modal';
 import LoginForm from '../LoginForm/LoginForm';
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
@@ -10,8 +9,6 @@ import css from './ModalContainer.module.css';
 const ModalContainer = () => {
   const dispatch = useDispatch();
   const modalType = useSelector(state => state.modal.modalType);
-  // const nannyId = useSelector(state => state.modal.nannyId);
-  // const nanny = useSelector(state => selectNannyById(state, nannyId));
   const nanny = useSelector(state => state.modal.nanny);
 
   return (
