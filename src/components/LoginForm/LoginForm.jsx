@@ -4,20 +4,12 @@ import { closeModal } from '../../redux/modal/slice';
 import { loginUser } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import * as yup from 'yup';
+import { loginSchema } from '../../utils/validationSchemas';
 import sprite from '../../assets/sprite.svg';
 import css from './LoginForm.module.css';
 import Button from '../ui/Button/Button';
 import Title from '../ui/Title/Title';
 import Text from '../ui/Text/Text';
-
-const schema = yup.object().shape({
-  email: yup.string().email('Invalid email').required('Email is required'),
-  password: yup
-    .string()
-    .min(6, 'Password must be at least 6 characters')
-    .required('Password is required'),
-});
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -33,7 +25,7 @@ const LoginForm = () => {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(loginSchema),
     defaultValues: {
       name: '',
       email: '',
@@ -42,7 +34,6 @@ const LoginForm = () => {
   });
 
   const onSubmit = async ({ email, password }) => {
-    console.log('User logged in:', { email, password });
     try {
       await dispatch(loginUser({ email, password }));
       reset();

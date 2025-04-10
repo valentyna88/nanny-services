@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { closeModal } from '../../redux/modal/slice';
 import { useDispatch } from 'react-redux';
-import * as yup from 'yup';
 import sprite from '../../assets/sprite.svg';
 import css from './AppointmentForm.module.css';
 import Button from '../ui/Button/Button';
@@ -10,27 +9,7 @@ import Title from '../ui/Title/Title';
 import Text from '../ui/Text/Text';
 import TimePicker from '../TimePicker/TimePicker';
 import toast from 'react-hot-toast';
-
-const numberRegex = /^\+380\d{9}$/;
-
-const schema = yup.object().shape({
-  address: yup.string().required('Address is required!'),
-  phone: yup
-    .string()
-    .matches(numberRegex, 'Phone must be in format +380XXXXXXXXX')
-    .required('Phone number is required!'),
-  childAge: yup
-    .string()
-    .matches(/^\d+$/, "Child's age must be a number")
-    .required("Child's age is required!"),
-  time: yup.string().required('Meeting time is required!'),
-  email: yup
-    .string()
-    .email('Invalid email address')
-    .required('Email is required'),
-  parentName: yup.string().required("Parent's name is required!"),
-  comment: yup.string().required('Comment is required!'),
-});
+import { appointmentSchema } from '../../utils/validationSchemas';
 
 const AppointmentForm = ({ nanny }) => {
   const dispatch = useDispatch();
@@ -42,7 +21,7 @@ const AppointmentForm = ({ nanny }) => {
     setError,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(appointmentSchema),
   });
 
   const onSubmit = data => {

@@ -4,24 +4,12 @@ import { closeModal } from '../../redux/modal/slice';
 import { registerUser } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import * as yup from 'yup';
+import { registerSchema } from '../../utils/validationSchemas';
 import sprite from '../../assets/sprite.svg';
 import css from './RegistrationForm.module.css';
 import Button from '../ui/Button/Button';
 import Title from '../ui/Title/Title';
 import Text from '../ui/Text/Text';
-
-const schema = yup.object().shape({
-  name: yup
-    .string()
-    .required('Name is required')
-    .min(2, 'Name must be at least 2 characters'),
-  email: yup.string().email('Invalid email').required('Email is required'),
-  password: yup
-    .string()
-    .min(6, 'Password must be at least 6 characters')
-    .required('Password is required'),
-});
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -37,7 +25,7 @@ const RegistrationForm = () => {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(registerSchema),
     defaultValues: {
       name: '',
       email: '',
