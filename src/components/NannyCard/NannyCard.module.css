@@ -59,9 +59,9 @@
   fill: transparent;
   transition: fill var(--transition);
 }
-.heartIcon:hover {
+/* .heartIcon:hover {
   fill: var(--primary-color);
-}
+} */
 .descriptionList {
   display: flex;
   flex-wrap: wrap;
