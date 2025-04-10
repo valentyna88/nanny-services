@@ -6,6 +6,8 @@ This is a React-based web application for finding and booking nannies.
 Users can register, log in, browse nannies, add them to favorites, and make
 appointments.
 
+## 📝 Project Documentation
+
 ## 🚀 Features
 
 - 👶 Browse a list of available nannies
@@ -20,6 +22,11 @@ appointments.
 - 📱 Responsive layout (mobile-first)
 
 ## 🛠️ Technologies
+
+- **Design Mockup**:
+  [Link to Figma mockup](https://www.figma.com/design/u36ajEOsnwio2GDGiabVPD/Nanny-Sevices?node-id=0-1&p=f&t=6pKDWmhgwmgRzXt4-0)
+- **Technical Specifications (ТЗ)**:
+  [Link to the project requirements](https://docs.google.com/document/d/19ugM1gvOw81nCyALr4EZs3dmv6OfJm94VjupcytbnJY/edit?tab=t.0)
 
 - React
 - Redux Toolkit
