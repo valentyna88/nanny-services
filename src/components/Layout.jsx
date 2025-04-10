@@ -3,7 +3,6 @@ import { Suspense } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Loader from './Loader/Loader';
 import Header from './Header/Header';
-import Container from './ui/Container/Container';
 import ModalContainer from './ModalContainer/ModalContainer';
 
 const Layout = () => {
@@ -20,11 +19,9 @@ const Layout = () => {
         }}
       />
       <main>
-        <Container>
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
-        </Container>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </main>
       <ModalContainer />
     </>

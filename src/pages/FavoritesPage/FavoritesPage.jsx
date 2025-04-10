@@ -6,6 +6,7 @@ import { sortAndFilterNannies } from '../../utils/sortAndFilterNannies';
 import NannyList from '../../components/NannyList/NannyList';
 import Filter from '../../components/Filter/Filter';
 import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
+import Container from '../../components/ui/Container/Container';
 import css from './FavoritesPage.module.css';
 
 const Favorites = () => {
@@ -28,7 +29,7 @@ const Favorites = () => {
   };
 
   return (
-    <section>
+    <Container>
       <Filter />
       {filteredFavorites.length === 0 ? (
         <p className={css.noResults}>You have no favorite nannies yet.</p>
@@ -40,7 +41,7 @@ const Favorites = () => {
           <LoadMoreBtn onClick={handleLoadMore} />
         )}
       </div>
-    </section>
+    </Container>
   );
 };
 

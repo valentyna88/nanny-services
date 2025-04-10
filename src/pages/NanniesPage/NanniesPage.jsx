@@ -15,6 +15,7 @@ import NannyList from '../../components/NannyList/NannyList';
 import Filter from '../../components/Filter/Filter';
 import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
 import Loader from '../../components/Loader/Loader';
+import Container from '../../components/ui/Container/Container';
 import css from './NanniesPage.module.css';
 
 const NanniesPage = () => {
@@ -43,7 +44,7 @@ const NanniesPage = () => {
   };
 
   return (
-    <section>
+    <Container>
       <Filter />
       {!isLoading && nannies.length === 0 ? (
         <p className={css.noResults}>
@@ -57,7 +58,7 @@ const NanniesPage = () => {
       </div>
       {isLoading && <Loader loading={isLoading} />}
       {error && <p>Error: {error}</p>}
-    </section>
+    </Container>
   );
 };
 
