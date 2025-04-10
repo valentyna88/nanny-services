@@ -29,6 +29,7 @@ const schema = yup.object().shape({
     .email('Invalid email address')
     .required('Email is required'),
   parentName: yup.string().required("Parent's name is required!"),
+  comment: yup.string().required('Comment is required!'),
 });
 
 const AppointmentForm = ({ nanny }) => {
@@ -155,6 +156,9 @@ const AppointmentForm = ({ nanny }) => {
           {...register('comment')}
           className={css.textarea}
         ></textarea>
+        {errors.comment && (
+          <span className={css.error}>{errors.comment.message}</span>
+        )}
 
         <Button type="submit" variant="filled">
           Send
