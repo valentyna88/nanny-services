@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import { generateTimeOptions } from '../../utils/generateTimeOptions';
 import sprite from '../../assets/sprite.svg';
 import css from './TimePicker.module.css';
 
-const times = ['09:00', '09:30', '10:00', '10:30'];
-
 const TimePicker = ({ register, setValue, setError, errors }) => {
+  const times = generateTimeOptions('09:00', '17:00', 30);
   const [selectedTime, setSelectedTime] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
