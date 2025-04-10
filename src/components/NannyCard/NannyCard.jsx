@@ -32,6 +32,17 @@ const NannyCard = ({ nanny }) => {
   const dispatch = useDispatch();
 
   const onAppointmentClick = () => {
+    const auth = getAuth();
+    const currentUser = auth.currentUser;
+
+    if (!currentUser) {
+      dispatch(openModal({ modalType: 'login' }));
+      toast('Please log in to make an appointment', {
+        icon: '🔒',
+      });
+      return;
+    }
+
     dispatch(openModal({ modalType: 'appointment', nanny }));
   };
 
@@ -44,6 +55,7 @@ const NannyCard = ({ nanny }) => {
     const currentUser = auth.currentUser;
 
     if (!currentUser) {
+      dispatch(openModal({ modalType: 'login' }));
       toast('Please log in to access the Favorites page', {
         icon: '🔒',
       });
