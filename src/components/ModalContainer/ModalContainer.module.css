@@ -14,8 +14,9 @@
   position: relative;
   /* top: 50%; */
   /* transform: translateY(-50%); */
-  margin: 40px 0;
-  width: 300px;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 300px;
   border-radius: 30px;
   background-color: var(--secondary-bg);
   overflow-y: auto;
@@ -30,14 +31,14 @@
 
 @media screen and (min-width: 768px) {
   .modal {
-    width: 400px;
+    max-width: 400px;
     padding: 32px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .modal {
-    width: 565px;
+    max-width: 565px;
     padding: 64px;
   }
 }
