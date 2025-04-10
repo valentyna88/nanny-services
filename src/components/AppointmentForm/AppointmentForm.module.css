@@ -21,8 +21,7 @@
 .nannyWrapper {
   display: flex;
   gap: 14px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin: 40px 0;
 }
 .avatar {
   border-radius: 15px;
@@ -46,29 +45,24 @@
   align-items: center;
   gap: 8px;
 }
-.input {
+.input,
+.textarea {
   width: 100%;
   border: 1px solid rgba(17, 16, 28, 0.1);
   border-radius: 12px;
-  padding: 16px 18px 16px;
+  padding: 16px 18px;
 }
-.input::placeholder {
+.input::placeholder,
+.textarea::placeholder {
   color: var(--text-color-dark);
 }
 .form > .input:not(:last-child) {
   margin-bottom: 18px;
 }
 .textarea {
-  width: 100%;
-  border: 1px solid rgba(17, 16, 28, 0.1);
-  border-radius: 12px;
-  padding: 16px 18px 16px;
   height: 116px;
   resize: none;
   outline: none;
-}
-.textarea::placeholder {
-  color: var(--text-color-dark);
 }
 .passwordWrapper {
   position: relative;
@@ -78,9 +72,9 @@
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  cursor: pointer;
   stroke: var(--text-color-dark);
   fill: none;
+  cursor: pointer;
 }
 .error {
   color: var(--error-message-color);
@@ -98,7 +92,4 @@ button[type='submit'] {
   .row {
     flex-direction: row;
   }
-}
-
-@media screen and (min-width: 1440px) {
 }
