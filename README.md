@@ -10,7 +10,7 @@ appointments.
 
 - **Design Mockup**:
   [Link to Figma mockup](https://www.figma.com/design/u36ajEOsnwio2GDGiabVPD/Nanny-Sevices?node-id=0-1&p=f&t=6pKDWmhgwmgRzXt4-0)
-- **Technical Specifications (ТЗ)**:
+- **Technical Specifications**:
   [Link to the project requirements](https://docs.google.com/document/d/19ugM1gvOw81nCyALr4EZs3dmv6OfJm94VjupcytbnJY/edit?tab=t.0)
 
 ## 🚀 Features
@@ -39,8 +39,8 @@ appointments.
 ## 📦 Installation
 
 ```bash
-git clone https://github.com/your-username/nanny-app.git
-cd nanny-app
+git clone https://github.com/valentyna88/nanny-services.git
+cd nanny-services
 npm install
 npm start
 
