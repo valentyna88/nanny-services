@@ -1,6 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchNannies } from './operations';
 
+const handlePending = state => {
+  state.isLoading = true;
+  state.error = null;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
 const initialState = {
   items: [],
   page: 1,
@@ -31,10 +41,7 @@ const nanniesSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchNannies.pending, state => {
-        state.isLoading = true;
-        state.error = null;
-      })
+      .addCase(fetchNannies.pending, handlePending)
       .addCase(fetchNannies.fulfilled, (state, action) => {
         state.isLoading = false;
         state.hasMore = action.payload.hasMore;
@@ -47,10 +54,7 @@ const nanniesSlice = createSlice({
           state.items.push(...newItems);
         }
       })
-      .addCase(fetchNannies.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
+      .addCase(fetchNannies.rejected, handleRejected);
   },
 });
 

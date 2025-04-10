@@ -2,10 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from '../../redux/auth/operations';
-import './App.module.css';
+import { selectIsRefreshing } from '../../redux/auth/selectors';
 import Layout from '../Layout';
 import PrivateRoute from '../PrivateRoute';
-import { selectIsRefreshing } from '../../redux/auth/selectors';
 import Loader from '../Loader/Loader';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));

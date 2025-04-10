@@ -17,19 +17,6 @@ const modalSlice = createSlice({
       state.modalType = null;
       state.nanny = null;
     },
-    // openModal: (state, action) => {
-    //   if (typeof action.payload === 'string') {
-    //     state.modalType = action.payload;
-    //     state.nannyId = null;
-    //   } else {
-    //     state.modalType = action.payload.modalType;
-    //     state.nannyId = action.payload.nannyId;
-    //   }
-    // },
-    // closeModal: state => {
-    //   state.modalType = null;
-    //   state.nannyId = null;
-    // },
   },
 });
 
