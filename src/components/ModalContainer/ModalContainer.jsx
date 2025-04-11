@@ -18,6 +18,7 @@ const ModalContainer = () => {
       contentLabel="Modal"
       overlayClassName={css.overlay}
       className={css.modal}
+      bodyOpenClassName="modal-open"
     >
       {modalType === 'login' && <LoginForm />}
       {modalType === 'register' && <RegistrationForm />}

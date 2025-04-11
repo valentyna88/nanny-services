@@ -4,7 +4,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Стилізація scrollbars по всьому додатку */
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -47,6 +46,9 @@ body {
   color: var(--text-color-dark);
   background-color: var(--primary-bg);
   margin: 0;
+}
+body.modal-open {
+  overflow: hidden;
 }
 h1,
 h2,
