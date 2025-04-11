@@ -9,10 +9,10 @@ const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addFavorite(state, action) {
-      // state.favorites.push(action.payload);
       const exists = state.favorites.some(
         nanny => nanny.id === action.payload.id
       );
+
       if (!exists) {
         state.favorites.push(action.payload);
       }

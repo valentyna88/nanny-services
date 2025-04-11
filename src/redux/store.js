@@ -15,18 +15,19 @@ import nanniesReducer from './nannies/slice';
 import modalReducer from './modal/slice';
 import storage from 'redux-persist/lib/storage';
 
-const persistConfig = {
-  key: 'favorites',
-  storage,
+const createPersistedReducer = (key, reducer) => {
+  const persistConfig = {
+    key,
+    storage,
+  };
+  return persistReducer(persistConfig, reducer);
 };
-
-const persistedReducer = persistReducer(persistConfig, favoritesReducer);
 
 export const store = configureStore({
   reducer: {
     nannies: nanniesReducer,
-    favorites: persistedReducer,
-    auth: authReducer,
+    favorites: createPersistedReducer('favorites', favoritesReducer),
+    auth: createPersistedReducer('auth', authReducer),
     modal: modalReducer,
   },
   middleware: getDefaultMiddleware =>
